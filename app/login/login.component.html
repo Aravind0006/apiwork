@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="container">
+        <div class="card-body">
+            <h1>login form</h1>
+            <br />
+            <form class="row needs-validation" name="form" [formGroup]="f">
+                <div class="row rt">
+                    <div class="form-group col-md-5">
+                        <label>UserName</label>
+                        <input type="text" pattern="[A-Za-z]+" required formControlName="UserName" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.controls['UserName'].invalid}" required />
+                        <div *ngIf="submitted && f.controls['UserName'].invalid" class="invalid-feedback">
+                            <div *ngIf="f.controls['UserName'].errors; required">First Name is required</div>
+                            <div *ngIf="f.controls['UserName'].errors; pattern: required"> Only letters </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-5">
+
+                        <label>Email</label>
+                        <input type="text" formControlName="Email" class="form-control"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                            [ngClass]="{'is-invalid': submitted && f.controls['Email'].invalid}" required />
+                        <div *ngIf="submitted && f.controls['Email'].invalid" class="invalid-feedback">
+                            <div *ngIf="f.controls
+                            ['Email'].errors; required">Email</div>
+                            <div *ngIf="f.controls['Email'].errors; pattern: required">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                    </div>
+<br>
+                    <!-- <div>
+                        <label for="number">Mobile</label>
+                        <input type="number" style="width: 400px" formControlName="mobile" class="form-control"
+                            type="text" pattern="[0-9]{10}" inputmode="numeric" minlength="10" maxlength="10"
+                            [ngClass]="{'is-invalid': submitted && f.controls['Mobile'].invalid}" required />
+                        <div *ngIf="submitted && f.controls['Mobile'].invalid" class="invalid-feedback">
+                            <div *ngIf="f.controls['Mobile'].errors; required">Mobile required</div>
+                            <div *ngIf="f.controls['Mobile'].errors;pattern: minlength; required"> minlength = 10</div>
+                            <div *ngIf="f.controls['Mobile'].errors; pattern: maxlength; required"> minlength = 10</div>
+                        </div>
+                    </div> -->
+
+
+
+                    <div class="col-md-3">
+                        <label>Mobile No <span class="text-danger"> *</span></label>
+                        <input type="number" class="form-control" formControlName="Mobile" placeholder="Enter Mobile No"minlength="10"
+                            onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]{10}">
+                        <small *ngIf="submitted && f.controls['Mobile'].invalid" class="text-danger">Mobile No is Required (10 digit)</small>
+                        <!-- <small class="text-danger" *ngIf="MobileNoExist">Mobile No Already Exist</small> -->
+                    </div>
+
+                </div>
+
+                <div>
+                    <button type="button" style="width: 150px; margin-top: 20px" (click)="submit()"
+                        class="btn btn-primary">
+                        submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<div class="card">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h4>UserName</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Email</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Mobile</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
